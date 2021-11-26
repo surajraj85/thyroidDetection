@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        function cleartextboxes() {
+            $("input:text").val("");
+        }
+    </script>
+    <!-- Starts image section -->
+<div class="row justify-content-md-center mb-4">
+        <div class="thumbnail">
+                <img src="{{url_for('static', filename='images/st.jpg')}}" class="img-thumbnail" width="200" height="200"/>
+            </div>
+    </div>
+
+   <div class="row justify-content-md-center mb-4">
+        <h2 cstyle="color:black">Thyroid Detection with Machine Learning</h2>
+    </div>
+ <!--
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                     <p><strong>Iris Setosa</strong></p>
+                   </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="{{url_for('static', filename='images/iris_versicolor.jpg')}}" class="img-thumbnail" />
+                <div class="caption">
+                     <p><strong>Iris Versicolor</strong></p>
+                   </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="{{url_for('static', filename='images/iris_virginica.jpg')}}" class="img-thumbnail" />
+                <div class="caption">
+                     <p><strong>Iris Virginica</strong></p>
+                   </div>
+            </div>
+        </div>
+    </div>
+-->
+    <!-- Ends image section -->
+    
+    <!-- Starts form section -->
+    <div class="form-container ">
+        <form class="form-horizontal" action = "/predict/" method="post">
+        
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="tsh">Thyroid Dtimulating Hormone (TSH): </label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="tsh" name="tsh">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="t3">Triiodothyronine (T3):</label>
+              <div class="col-sm-4">          
+                <input type="text" class="form-control" id="t3" name="t3">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="tt4">Thyroxine (TT4):</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="tt4" name="tt4">
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="t4u">Thyroxine Utilization Rates (T4U):</label>
+              <div class="col-sm-4">          
+                <input type="text" class="form-control" id="t4u" name="t4u">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="control-label col-sm-2" for="fti">Free T4 Index (FTI):</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="fti" name="fti">
+              </div>
+            </div>
+
+            <div class="form-group row"> 
+            <label class="control-label col-sm-2" for="">&nbsp;</label>                
+              <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-primary">Predict</button>
+                  <button type="button" class="btn btn-primary" onclick="cleartextboxes();">Clear</button>
+              </div>
+            </div>
+          </form>
+        <!-- Ends form section -->
+        
+        
+    </div>
+
+
+{% endblock %}

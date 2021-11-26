@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-md-center mb-4">
+        <div class="thumbnail">
+                <img src="{{url_for('static', filename='images/st.jpg')}}" class="img-thumbnail" width="200" height="200"/>
+            </div>
+    </div>
+   <div class="row justify-content-md-center mb-4">
+        <h2 cstyle="color:black">Thyroid Detection with Machine Learning</h2>
+    </div>
+    <div class="row justify-content-md-center mb-4">
+        <!--<h3 class='text-primary'>Prediction is {{ prediction[0] }}</h3> -->
+        <h3 cstyle="color:black">Prediction is: &nbsp;
+        {% if prediction[0] == 1 %}
+                <h3 style="color:red"> Thyroid Positive</h3>
+            {% endif %}
+
+            {% if prediction[0] == 0 %}
+                <h3 style="color:green"> Thyroid Negative</h3>
+            {% endif %}
+            </h3>
+    </div>
+
+    <div class="row justify-content-md-center">
+        <div class="thumbnail">
+            {% if prediction[0] == 1 %}
+                <img src="{{url_for('static', filename='images/thyroid_positive.jpg')}}" class="img-thumbnail" />
+            {% endif %}
+        </div>
+    </div>
+        
+    <div class="row justify-content-md-center">
+        <div class="thumbnail">
+            {% if prediction[0] == 0 %}
+                <img src="{{url_for('static', filename='images/thyroid-neg.jpg')}}" class="img-thumbnail" />
+            {% endif %}
+        </div>
+    </div>
+ <div class="form-group row">
+            <label class="control-label col-sm-2" for="">&nbsp;</label>
+              <div class="col-sm-offset-2 col-sm-4">
+                  <button type="button" class="btn btn-primary" onclick="goBack();">Go Back</button>
+              </div>
+            </div>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
+{% endblock %}
